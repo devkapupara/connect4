@@ -75,9 +75,9 @@ function diagonalCheck()
     }
   }
 
-  for (var r = 3; r < 6; r++)
+  for (var r = 3; r < 6; r++)                 // Ascending Diagonal Check
   {
-    for (var c = 3; c < 7; c++)
+    for (var c = 0; c < 4; c++)
     {
       if (colorCheck(getColor(r, c), getColor(r-1,c+1), getColor(r-2,c+2), getColor(r-3,c+3)))
         return true
@@ -99,11 +99,3 @@ function getBottomRow(column)
       return i
   }
 }
-
-// for (var r = 3; r < 6; r++)
-// {
-//   for (var c = 0; c < 4; c++)
-//   {
-//     console.log("(" + r + "," + c + "), (" + (r-1) + "," + (c+1) + "), (" + (r-2) + "," + (c+2) + "), (" + (r-3) + "," + (c+3) + ")")
-//   }
-// }
