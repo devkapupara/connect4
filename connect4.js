@@ -1,10 +1,12 @@
-var board = $('table tr')
+var board = $('table table tr')
 
 var player1 = 'rgb(251, 54, 64)'
 var player2 = 'rgb(66, 202, 253)'
 var bc = 'rgb(23, 29, 28)'
 var turn = 0
-var gameNumber = 1;
+var gameNumber = 1
+var player1Wins = 0
+var player2Wins = 0
 
 $('#game').text("Game: " + gameNumber)
 gameStatus()
@@ -19,6 +21,10 @@ $('.board button').on('click', function(){
   if (rowCheck(bottomRow) || columnCheck(col) || diagonalCheck())
   {
     $('#status').text((turn % 2 == 1 ? "Player 1" : "Player 2") + " has won!")
+    if (turn % 2 == 1)
+      $('td#p1').text(++player1Wins)
+    else
+      $('td#p2').text(++player2Wins)
     setTimeout(reset,2000)
     $('.board button').prop('disabled', true)
   }
@@ -37,6 +43,7 @@ function reset()
   $('#game').text("Game: " + ++gameNumber)
   $('.board button').prop('disabled', false)
   turn = 0
+  gameStatus()
 }
 
 function colorCheck(col1, col2, col3, col4)
@@ -75,7 +82,7 @@ function diagonalCheck()
     }
   }
 
-  for (var r = 3; r < 6; r++)                 // Ascending Diagonal Check
+  for (var r = 3; r < 6; r++)
   {
     for (var c = 0; c < 4; c++)
     {
